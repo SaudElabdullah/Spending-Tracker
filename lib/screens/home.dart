@@ -3,6 +3,7 @@ import 'package:spending_tracker/constants/constants.dart';
 import 'package:spending_tracker/theme/app_colors.dart';
 import 'package:spending_tracker/utils/size_config.dart';
 import 'package:date_time_format/date_time_format.dart';
+import 'package:spending_tracker/widget/buy_card.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Home extends StatefulWidget {
@@ -205,12 +206,17 @@ class _HomeState extends State<Home> {
         ),
         Positioned(
           top: SizeConfig.heightMultiplier! * 65,
+          right: 0,
+          left: 0,
+          bottom: 0,
           child: Container(
-            padding: EdgeInsets.all(
-              SizeConfig.widthMultiplier! * 6,
+            padding: EdgeInsets.only(
+              left: SizeConfig.widthMultiplier! * 6,
+              right: SizeConfig.widthMultiplier! * 6,
+              top: SizeConfig.widthMultiplier! * 6,
             ),
             width: SizeConfig.widthMultiplier! * 100,
-            color: AppColors.thirdColor.withOpacity(0.4),
+            color: AppColors.thirdColor.withOpacity(0.6),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,48 +315,20 @@ class _HomeState extends State<Home> {
                   SizedBox(
                     height: SizeConfig.heightMultiplier! * 2,
                   ),
-                  Container(
-                    padding: EdgeInsets.all(SizeConfig.widthMultiplier! * 1),
-                    height: SizeConfig.heightMultiplier! * 7,
-                    width: SizeConfig.widthMultiplier! * 100,
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: SizeConfig.heightMultiplier! * 6,
-                          width: SizeConfig.heightMultiplier! * 6,
-                          decoration: BoxDecoration(
-                            color: AppColors.thirdColor,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Icon(
-                            Icons.shopping_bag_outlined,
-                            size: SizeConfig.heightMultiplier! * 5,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
-                        Text(
-                          'Shopping',
-                          style: TextStyle(
-                            color: AppColors.secondaryColor,
-                            fontSize: SizeConfig.textMultiplier! * 3,
-                            fontWeight: FontWeight.w700
-                          ),
-                        ),
-                        Text(
-                          '\$2,100',
-                          style: TextStyle(
-                              color: AppColors.primaryColor,
-                              fontSize: SizeConfig.textMultiplier! * 3,
-                              fontWeight: FontWeight.w700
-                          ),
-                        ),
-                      ],
-                    ),
+                  BuyCard(
+                    icon: Icons.shopping_bag_outlined,
+                    buy: 'Shopping',
+                    price: '\$2,100',
+                    color: AppColors.thirdColor,
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier! * 2,
+                  ),
+                  BuyCard(
+                    icon: Icons.shopping_bag_outlined,
+                    buy: 'Shopping',
+                    price: '\$2,100',
+                    color: AppColors.thirdColor,
                   ),
                 ],
               ),
